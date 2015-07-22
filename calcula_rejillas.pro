@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT 		 += qml
 
 TARGET = calcula_rejillas
 TEMPLATE = app
