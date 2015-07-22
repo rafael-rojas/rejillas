@@ -10,6 +10,8 @@ ApplicationWindow {
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
 
+    signal qmlSignal(string msg)
+
     GridLayout {
     	id: grid
     	row: 1
@@ -31,6 +33,7 @@ ApplicationWindow {
         	width: 200
         	model: [ "100", "150", "200", "250", "300", "350", "400", "450", "500", "600" ]
         	enabled: false
+            onActivated: ventana.qmlSignal("Hello from QML")
         }
 
         TextField {
@@ -46,6 +49,7 @@ ApplicationWindow {
 
         Label {
         	id: resultado
+            objectName: "resultado"
         	Layout.row: 0
         	Layout.column: 4
         	Layout.alignment: Qt.AlignRight
