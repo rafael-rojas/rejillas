@@ -14,7 +14,6 @@ ApplicationWindow {
 
     GridLayout {
     	id: grid
-    	row: 1
         anchors.fill: parent
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
