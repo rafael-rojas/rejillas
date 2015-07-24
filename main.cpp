@@ -1,6 +1,8 @@
 #include <QGuiApplication>
-#include <QmlEngine>
+#include <QQmlEngine>
 #include <QQmlComponent>
+
+#include "tabla.h"
 
 class Dialogo : public QObject
 {
@@ -14,6 +16,30 @@ signals:
 
 };
 
+void Dialogo::calculaLineEdit(const QString texto){
+
+    int entero = texto.toInt();
+
+    //QString alturaTexto = alturaCombo->currentText();
+
+    //int entero2 = alturaTexto.toInt();
+
+    tabla tablaRejillas;
+    tablaRejillas.inicializaTabla();
+
+    int anchura = tablaRejillas.encuentraAnchura(entero, entero2);
+
+    QString res;
+    res.setNum(anchura);
+
+    QString resultado = res+"x";//+alturaTexto;
+
+    emit enviaAncho(resultado);
+
+    //return res;
+
+}
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -25,16 +51,17 @@ int main(int argc, char *argv[])
     //Dialog w;
     //w.show();
 
+    /* ejemplo de modificacion de campo en qml
     QObject *resultado = object->findChild<QObject*>("resultado");
-	if (resultado)
+    if (resultado)
     	resultado->setProperty("text", "hola");
-
+    */
+    
     Dialogo miDialogo;
-    QObject::connect(object, SIGNAL(qmlSignal(QString)),
-                     &miDialogo, SLOT(calculaLineEdit(QString)));
+    //QObject::connect(object, SIGNAL(qmlSignal(QString)), &miDialogo, SLOT(calculaLineEdit(QString)));
 
 
-    delete object;
+    
 
-    return app.exec();
+    return app.exec();delete object;
 }
