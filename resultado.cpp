@@ -5,7 +5,7 @@
 #include <QVariant>
 
 
-void Resultado::calculaLineEdit(const QString altura, const QString caudal)
+void CalculaResultado::calculaLineEdit(const QString altura, const QString caudal)
 {
     qDebug() << altura;
     qDebug() << caudal;
@@ -35,6 +35,6 @@ void Resultado::calculaLineEdit(const QString altura, const QString caudal)
         else 
             resultado = "Sin rejilla para ese caudal";
         
-        emit enviaAncho(resultado);
+        emit enviaResultado(resultado);
     }
 }

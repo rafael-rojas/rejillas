@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QVariant>
 
-class Resultado : public QObject
+class CalculaResultado : public QObject
 {
     Q_OBJECT
 
@@ -14,7 +14,7 @@ public slots:
     void calculaLineEdit(const QString, const QString );
     
 signals:
-    void enviaAncho(QVariant);
+    void enviaResultado(QVariant);
 };
 
 #endif // RESULTADO_H

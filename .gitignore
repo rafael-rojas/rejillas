@@ -1,0 +1,7 @@
+calcula_rejillas
+main.o
+moc_resultado.cpp
+moc_resultado.o
+rejilla.o
+resultado.o
+tabla.o

@@ -12,7 +12,7 @@ ApplicationWindow {
 
     signal qmlSignal(string comboText, string textfieldText)
     
-    function enviaAncho(resultado) {
+    function muestraResultado(resultado) {
             console.log("resultado " + resultado);
             grid.children[4].text = resultado;
     }

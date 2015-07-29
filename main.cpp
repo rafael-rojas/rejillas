@@ -26,11 +26,11 @@ int main(int argc, char *argv[])
     	resultado->setProperty("text", "hola");
     */
     
-    Resultado miResultado;
+    CalculaResultado miResultado;
 
     QObject::connect(object, SIGNAL(qmlSignal(QString, QString)), &miResultado, SLOT(calculaLineEdit(QString, QString)));
     
-    QObject::connect(&miResultado, SIGNAL(enviaAncho(QVariant)), object, SLOT(enviaAncho(QVariant)));
+    QObject::connect(&miResultado, SIGNAL(enviaResultado(QVariant)), object, SLOT(muestraResultado(QVariant)));
     
 
     return app.exec();//delete object;
