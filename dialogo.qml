@@ -10,14 +10,26 @@ ApplicationWindow {
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
 
-    signal qmlSignal(string msg)
+    signal qmlSignal(string comboText, string textfieldText)
+    
+    function enviaAncho(resultado) {
+            console.log("resultado " + resultado);
+            grid.children[4].text = resultado;
+    }
+    
+    Connections {
+        target: resultado
+        onEnviaAncho : {
+            console.log(res)
+        }
+    }
 
     GridLayout {
     	id: grid
         anchors.fill: parent
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
-
+        
         Label {
             Layout.row: 0
             Layout.column: 0
@@ -32,7 +44,6 @@ ApplicationWindow {
             width: 200
             model: [ "100", "150", "200", "250", "300", "350", "400", "450", "500", "600" ]
             enabled: true
-            onActivated: ventana.qmlSignal("Hello from QML")
         }
 
         TextField {
@@ -43,14 +54,26 @@ ApplicationWindow {
             id: cajaCaudal
             objectName: "textfield"
             placeholderText: qsTr("Introduce caudal")
-            validator: RegExpValidator {}
+            validator: IntValidator {}
+            //onEditingFinished: ventana.qmlSignal(comboFamilia.currentText, cajaCaudal.text)
+        }
+        
+        Button {
+            Layout.column: 4
+            text: qsTr("Buscar rejilla")
+
+            onClicked:
+                // emit the submitTextField signal
+                qmlSignal(comboFamilia.currentText, cajaCaudal.text)
+                //console.log("hola")
+                //ventana.enviaAncho("555")
         }
 
         Label {
             id: resultado
             objectName: "resultado"
             Layout.row: 0
-            Layout.column: 4
+            Layout.column: 5
             Layout.alignment: Qt.AlignRight
             text: qsTr("Resultado")
         }
