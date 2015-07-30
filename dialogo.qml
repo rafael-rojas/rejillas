@@ -3,6 +3,10 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.1
 import QtQuick 2.0
 
+import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.extras 2.0 as PlasmaExtras
+
 ApplicationWindow {
     id: ventana
     visible: true
@@ -17,20 +21,13 @@ ApplicationWindow {
             grid.children[4].text = resultado;
     }
     
-    Connections {
-        target: resultado
-        onEnviaAncho : {
-            console.log(res)
-        }
-    }
-
     GridLayout {
     	id: grid
         anchors.fill: parent
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
         
-        Label {
+        PlasmaComponents.Label {
             Layout.row: 0
             Layout.column: 0
             Layout.alignment: Qt.AlignRight
@@ -46,7 +43,7 @@ ApplicationWindow {
             enabled: true
         }
 
-        TextField {
+        PlasmaComponents.TextField {
             Layout.column: 2
             Layout.row: 0
             Layout.columnSpan: 2
@@ -58,7 +55,7 @@ ApplicationWindow {
             //onEditingFinished: ventana.qmlSignal(comboFamilia.currentText, cajaCaudal.text)
         }
         
-        Button {
+        PlasmaComponents.Button {
             Layout.column: 4
             text: qsTr("Buscar rejilla")
 
@@ -69,7 +66,7 @@ ApplicationWindow {
                 //ventana.enviaAncho("555")
         }
 
-        Label {
+        PlasmaComponents.Label {
             id: resultado
             objectName: "resultado"
             Layout.row: 0
